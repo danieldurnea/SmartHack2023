@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome form</title>
+</head>
+<body>
+    <form method="POST" action="comparison">
+        {% csrf_token %}
+        <label for="input1">Legal name</label>
+        <input type="text" id="input1" name="input1" required value="Intuit">
+        <br>
+        <label for="input2">Website or Phone Number</label>
+        <input type="text" id="input2" name="input2" value="https://www.intuit.com/">
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

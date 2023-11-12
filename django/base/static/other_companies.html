@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="POST" action="compare_companies">
+        {% csrf_token %}
+        <label for="input4">Country</label>
+        <input type="text" id="input4" name="input4" required>
+        <br>
+        <label for="input2">Industry</label>
+        <input type="text" id="input2" name="input2">
+        <br>
+        <label for="input3">Attribute</label>
+        <input type="text" id="input3" name="input3">
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

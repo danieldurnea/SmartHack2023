@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="POST" action="get_other">
+    {% csrf_token %}
+    <span>Legal names: {{company_legal_names}}</span><br>
+    <span>Commercial names: {{company_commercial_names}}</span><br>
+    <span>Primary phone: {{primary_phone}}</span><br>
+    <span>Emails: {{emails}}</span><br>
+    <span>Is this right?</span>
+    <label>
+        <input type="radio" name="answer" value="yes"> Yes
+    </label>
+    <label>
+        <input type="radio" name="answer" value="no"> No
+    </label>
+
+    <br>
+
+    <input type="submit" value="Submit">
+
+</form>
+</body>
+</html>

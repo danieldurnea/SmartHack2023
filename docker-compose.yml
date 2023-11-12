@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+  db:
+    container_name: smdb
+    image: mariadb:11.1.2
+    environment:
+      - MYSQL_ROOT_PASSWORD=mariadb
+      - MYSQL_DATABASE=mariadb
+      - MYSQL_USER=mariadb
+      - MYSQL_PASSWORD=mariadb
+    volumes:
+      - mariadb_data:/var/lib/mariadb
+    ports:
+      - "3308:3306"
+    healthcheck:
+      test: ["CMD", "/usr/local/bin/healthcheck.sh", "--su-mysql", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 30s
+      retries: 2
+    restart: on-failure
+  web:
+    container_name: smweb
+    build: .
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./django:/code
+    ports:
+      - "8009:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+      redisdb:
+        condition: service_healthy
+    restart: on-failure
+  redisdb:
+    container_name: smredis
+    image: redis:7.2.3
+    ports: 
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+      interval: 5s
+      timeout: 30s
+      retries: 2
+    restart: on-failure
+
+
+volumes:
+  redis_data:
+  mariadb_data:

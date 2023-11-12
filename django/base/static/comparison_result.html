@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<span style="font-weight: bold">Own company</span>
+<br>
+<span>Toxic: {{own.Toxic}}</span><br>
+<span>Insult: {{own.Insult}}</span><br>
+<span>Profanity: {{own.Profanity}}</span><br>
+<span>Derogatory: {{own.Derogatory}}</span><br>
+<span>Sexual: {{own.Sexual}}</span><br>
+<span>Death, Harm & Tragedy: {{own.DHT}}</span><br>
+<span>Violent: {{own.Violent}}</span><br>
+<span>Firearms & Weapons: {{own.FW}}</span><br>
+<span>Public Safety: {{own.PS}}</span><br>
+<span>Health: {{own.Health}}</span><br>
+<span>Religion & Belief: {{own.RB}}</span><br>
+<span>Illicit Drugs: {{own.ID}}</span><br>
+<span>War & Conflict: {{own.WC}}</span><br>
+<span>Politics: {{own.Politics}}</span><br>
+<span>Finance: {{own.Finance}}</span><br>
+<span>Legal: {{own.Legal}}</span><br>
+<hr>
+
+{% for item in other_categs %}
+     <span style="font-weight: bold">{{item.company_name}} ({{item.anaf}})=> {{item.distance}}</span><br>
+     <span>Toxic: {{item.Toxic}}</span><br>
+    <span>Insult: {{item.Insult}}</span><br>
+    <span>Profanity: {{item.Profanity}}</span><br>
+    <span>Derogatory: {{item.Derogatory}}</span><br>
+    <span>Sexual: {{item.Sexual}}</span><br>
+    <span>Death, Harm & Tragedy: {{item.DHT}}</span><br>
+    <span>Violent: {{item.Violent}}</span><br>
+    <span>Firearms & Weapons: {{item.FW}}</span><br>
+    <span>Public Safety: {{item.PS}}</span><br>
+    <span>Health: {{item.Health}}</span><br>
+    <span>Religion & Belief: {{item.RB}}</span><br>
+    <span>Illicit Drugs: {{item.ID}}</span><br>
+    <span>War & Conflict: {{item.WC}}</span><br>
+    <span>Politics: {{item.Politics}}</span><br>
+    <span>Finance: {{item.Finance}}</span><br>
+    <span>Legal: {{item.Legal}}</span><br><br>
+    <span>Common values: {{item.common_values}}</span>
+    <hr>
+{% endfor %}
+
+</body>
+</html>
